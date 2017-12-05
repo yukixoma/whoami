@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(useragent.express()); //use to easy read user agent in json format
 
-app.get("/",function(req,res,next){
+app.get("/api/whoami",function(req,res,next){
     var lang    = req.acceptsLanguages;
     var os      = req.useragent.os;
     var browser = req.useragent.browser;
@@ -24,6 +24,6 @@ app.get("/",function(req,res,next){
     });
 })
 
-app.listen(3000 || process.env.PORT, function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log("Working");
 })
