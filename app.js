@@ -2,6 +2,7 @@ var express     = require("express");
 var bodyParser  = require("body-parser");
 var cors        = require("cors");
 var useragent   = require("express-useragent");
+var getIP       = require("ipware")().get_ip;
 var app         = module.exports = express();
 
 
@@ -14,12 +15,13 @@ app.get("/api/whoami",function(req,res,next){
     var os      = req.useragent.os;
     var browser = req.useragent.browser;
     var version = req.useragent.version
-    var ip      = req.ip;
+    var ip      = getIP(req).clientIp;
     console.log("home page working");
     res.json({
         "ip address":ip,
         "lang": lang[0],
         "browser": browser,
+        "version": version,
         "os": os,
     });
 })
