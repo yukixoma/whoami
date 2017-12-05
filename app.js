@@ -10,11 +10,11 @@ app.use(cors());
 app.use(useragent.express()); //use to easy read user agent in json format
 
 app.get("/api/whoami",function(req,res,next){
-    var lang    = req.acceptsLanguages;
+    var lang    = req.acceptsLanguages();
     var os      = req.useragent.os;
     var browser = req.useragent.browser;
     var version = req.useragent.version
-    var ip      = req.connection.remoteAddress;
+    var ip      = req.ip;
     console.log("home page working");
     res.json({
         "ip address":ip,
