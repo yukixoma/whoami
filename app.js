@@ -14,7 +14,7 @@ app.get("/api/whoami",function(req,res,next){
     var os      = req.useragent.os;
     var browser = req.useragent.browser;
     var version = req.useragent.version
-    var ip      = req.ip;
+    var ip      = req.connection.remoteAddress;
     console.log("home page working");
     res.json({
         "ip address":ip,
